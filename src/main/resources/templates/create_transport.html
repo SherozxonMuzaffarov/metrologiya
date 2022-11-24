@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org">
+
+<head>
+    <title>O'zvagonta'mir</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+
+<body>
+<div class="container">
+    <div class="row">
+        <div class="col-sm col-md col-lg container justify-content-center card">
+            <hr>
+            <div class="container bg-yellow d-flex justify-content-center text-black">
+                <h1 >Transport qo'shish</h1>
+            </div>
+            <hr>
+            <form th:action="@{/transport/saveTransport}" th:object="${transportModel}" method="POST">
+                <div class="row">
+                    <div class="form-group col">
+                        <label>Davlat raqami</label>
+                        <input type="text" th:field="*{nomeri}" class="form-control"
+                               placeholder="davlat raqamini kiriting" />
+                    </div>
+                    <div class="form-group col">
+                        <label>Texnika rusumi</label>
+                        <input type="text" th:field="*{rusumi}" class="form-control"
+                               placeholder="texnika rusumini kiriting" />
+                    </div>
+
+                </div>
+                <div class="row">
+                    <div class="form-group col">
+                        <label>Yili</label>
+                        <input type="number" th:min="1950" th:max="2024" th:value="2022" th:field="*{yili}" class="form-control"
+                               placeholder="yilini kiriting" />
+                    </div>
+                    <div class="form-group col">
+                        <label>Texasmotr vaqti</label>
+                        <input type="text" th:field="*{texMuddati}" class="form-control"
+                               placeholder="kun-oy-yil" />
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group col">
+                        <label>Gaz ispitaniya vaqti</label>
+                        <input type="text" th:field="*{gazMuddati}" class="form-control"
+                               placeholder="kun-oy-yil" />
+                    </div>
+                    <div class="form-group col">
+                        <label>Sug'urta vaqti</label>
+                        <input type="text" th:field="*{sugurta}" class="form-control"
+                               placeholder="kun-oy-yil" />
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group col">
+                        <label>Yoqilg'i turi</label>
+                        <input type="text" th:field="*{yoqilgiTuri}" class="form-control"
+                               placeholder="Yoqilg'i turi" />
+                    </div>
+                    <div class="form-group col">
+                        <label for="sel3">Holati</label>
+                        <select class="form-control" th:field="*{holati}" id="sel3">
+                            <option th:value="Soz">Soz</option>
+                            <option th:value="Nosoz">Nosoz</option>
+                            <option th:value="Saqlanishda">Saqlanishda</option>
+                        </select>
+                    </div>
+
+                </div>
+                <div class="row">
+                    <div class="form-group col">
+                        <label for="sel1">Depo nomi</label>
+                        <select class="form-control" th:field="*{depoNomi}" id="sel1">
+                            <option th:value="VCHD-3">VCHD-3</option>
+                            <option th:value="VCHD-5">VCHD-5</option>
+                            <option th:value="VCHD-6">VCHD-6</option>
+                        </select>
+                    </div>
+                    <div class="form-group col">
+                        <label>Izoh</label>
+                        <input type="text" th:field="*{izoh}" class="form-control"
+                               placeholder="Izoh" />
+                    </div>
+                </div>
+
+
+                <div class="box-footer justify-content-center row">
+                    <button class="btn btn-primary btn-block col" type="submit">Saqlash</button>
+                    <a th:href="@{/transport}" class=" btn btn-danger col " >Ortga</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+</div>
+</body>
+
+</html>
