@@ -138,10 +138,8 @@ public class MetrologiyaController {
         if (request.isUserInRole("DIRECTOR")) {
             if (!depoNomi.equalsIgnoreCase("Hammasi")) {
                 model.addAttribute("templates", metrologiyaService.findAllByDepoNomi(depoNomi));
-             //   templatesToDownload = metrologiyaService.findAllByDepoNomi(depoNomi);
             } else {
                 model.addAttribute("templates", metrologiyaService.findAll());
-             //   templatesToDownload = metrologiyaService.findAll();
             }
             model.addAttribute("isAdmin", true);
             model.addAttribute("currentDate", currentDate);

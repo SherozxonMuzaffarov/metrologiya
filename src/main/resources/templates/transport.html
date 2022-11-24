@@ -47,7 +47,7 @@
             <li class="nav-item">
                 <form th:style="${isAdmin} ? '':'display:none'" th:action="@{/transport/filter}" method="get">
                     <div class="orm-group">
-                        <select class="form-control" th:name="de"  >
+                        <select class="form-control" th:name="depoNomi"  >
                             <option th:value="'Hammasi'">O'zvagonta'mir</option>
                             <option th:value="'VCHD-3'">VCHD-3</option>
                             <option th:value="'VCHD-5'">VCHD-5</option>
@@ -79,7 +79,7 @@
             <th>Texnik holati</th>
             <th>Izoh</th>
             <th>
-                <a th:href="@{#}" class=" btn btn-success btn-sm ">Yuklab olish</a>
+                <a th:href="@{#}" class=" btn btn-success btn-sm ">Action</a>
             </th>
         </tr>
         </thead>
