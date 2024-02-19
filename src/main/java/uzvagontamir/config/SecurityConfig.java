@@ -21,7 +21,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
         auth
                 .inMemoryAuthentication()
-                .withUser("o'vt").password(passwordEncoder().encode("1111")).roles("DIRECTOR")
+                .withUser("uzvagontamir").password(passwordEncoder().encode("1111")).roles("DIRECTOR")
                 .and()
                 .withUser("vchd-6").password(passwordEncoder().encode("789")).roles("SAMTRANSPORT")
                 .and()
@@ -30,10 +30,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .withUser("vchd-5").password(passwordEncoder().encode("456")).roles("ANDJTRANSPORT");
 
     }
-//    @Bean
-//    public AuthenticationManager authenticationManager(AuthenticationConfiguration authenticationConfiguration) throws Exception {
-//        return authenticationConfiguration.getAuthenticationManager();
-//    }
+
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http

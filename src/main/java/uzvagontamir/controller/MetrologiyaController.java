@@ -36,6 +36,35 @@ public class MetrologiyaController {
 //        metrologiyaService.createPdf(templatesToDownload,response);
 //    }
 
+    @PreAuthorize(value = "hasAnyRole('DIRECTOR','SAMMETROLOGIYA','HAVMETROLOGIYA','ANDJMETROLOGIYA')")
+    @GetMapping("/")
+    public String listMetrology(Model model, HttpServletRequest request ) {
+
+        if (request.isUserInRole("DIRECTOR")) {
+            model.addAttribute("templates", metrologiyaService.findAll());
+            //   templatesToDownload = metrologiyaService.findAll();
+        }else if (request.isUserInRole("SAMMETROLOGIYA")) {
+            model.addAttribute("templates", metrologiyaService.findAllByDepoNomi("VCHD-6"));
+            //   templatesToDownload = metrologiyaService.findAllByDepoNomi("VCHD-6");
+        }else if (request.isUserInRole("HAVMETROLOGIYA")) {
+            model.addAttribute("templates", metrologiyaService.findAllByDepoNomi("VCHD-3"));
+            //   templatesToDownload = metrologiyaService.findAllByDepoNomi("VCHD-3");
+        }else if (request.isUserInRole("ANDJMETROLOGIYA")) {
+            model.addAttribute("templates", metrologiyaService.findAllByDepoNomi("VCHD-5"));
+            //   templatesToDownload = metrologiyaService.findAllByDepoNomi("VCHD-5");
+        }
+
+        if (request.isUserInRole("DIRECTOR")) {
+            model.addAttribute("isAdmin", true);
+            model.addAttribute("currentDate", currentDate);
+        }else {
+            model.addAttribute("isAdmin", false);
+            model.addAttribute("currentDate", currentDate);
+        }
+
+        return "metrologiya";
+    }
+
     // hammasini olish
     @PreAuthorize(value = "hasAnyRole('DIRECTOR','SAMMETROLOGIYA','HAVMETROLOGIYA','ANDJMETROLOGIYA')")
     @GetMapping("/metrologiya")

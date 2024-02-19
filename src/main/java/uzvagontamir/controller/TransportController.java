@@ -22,13 +22,6 @@ public class TransportController {
 
     // hammasini olish
     @PreAuthorize(value = "hasAnyRole('DIRECTOR','SAMTRANSPORT','HAVTRANSPORT','ANDJTRANSPORT')")
-    @GetMapping("/")
-    public String listTransport() {
-        return "main";
-    }
-
-    // hammasini olish
-    @PreAuthorize(value = "hasAnyRole('DIRECTOR','SAMTRANSPORT','HAVTRANSPORT','ANDJTRANSPORT')")
     @GetMapping("/transport")
     public String listTransport(Model model,HttpServletRequest request) {
         if (request.isUserInRole("DIRECTOR")) {
